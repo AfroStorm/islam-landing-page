@@ -7,9 +7,10 @@ const StyledSection = styled.section`
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
   margin-top: 5rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   transform: ${({ $currentTab }) => `translateX(${100 * (1 - $currentTab)}%)`};

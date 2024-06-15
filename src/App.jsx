@@ -9,6 +9,9 @@ import About from "./components/about/About";
 import backgroundImage from "./assets/morocco.jpg";
 
 const StyledMain = styled.main`
+  position: relative;
+  width: 100vw;
+  height: 60rem;
   overflow: hidden;
 
   & .background-img {

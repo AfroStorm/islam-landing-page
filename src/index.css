@@ -14,7 +14,8 @@ html {
 
 :root {
   --primary: #f1e5d1;
-  --secondary: #dbb5b5;
+  --complementary: #d1ddf1;
+  --secondary: #312f2c;
   --accent-1: #c39898;
   --accent-2: #987070;
   --text-1: #64748b;
@@ -26,7 +27,7 @@ html {
 }
 
 body {
-  background: black;
+  background: var(--secondary);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;

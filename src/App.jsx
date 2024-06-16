@@ -4,43 +4,21 @@ import NavBar from "./components/general/NavBar";
 import { useEffect, useState } from "react";
 import MobileMenu from "./components/general/MobileMenu";
 import navLinks from "./appData/navLinks";
+import services from "./appData/services";
 import socialMediaLinks from "./appData/socialMediaLinks";
 import About from "./components/about/About";
 import backgroundImage from "./assets/morocco.jpg";
+import Service from "./components/service/Service";
 
 const StyledMain = styled.main`
-  position: relative;
   width: 100vw;
-  height: 60rem;
-  overflow: hidden;
-
-  & .background-img {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
+  ${({ $isBigScreen }) =>
+    $isBigScreen &&
+    `  
+    position: relative;
     height: 100vh;
-    background: url(${backgroundImage});
-    background-clip: content-box;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    z-index: -1;
-    opacity: 0.65;
-    filter: contrast(0.5);
-  }
-  /* & .background-img {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-    opacity: 0.6;
-    filter: contrast(0.5);
-  } */
+`}
+  overflow: hidden;
 `;
 
 function App() {
@@ -72,9 +50,7 @@ function App() {
   }, []);
 
   return (
-    <StyledMain>
-      <img src={backgroundImage} alt="cordoba" className="background-img" />
-
+    <StyledMain $isBigScreen={windowWidth > 992}>
       <MobileMenu
         isHidden={isHidden}
         handleMobileMenu={handleMobileMenu}
@@ -89,8 +65,13 @@ function App() {
         socialMediaLinks={socialMediaLinks}
         handleCurrentTab={handleCurrentTab}
       />
-      <Home currentTab={currentTab} />
-      <About currentTab={currentTab} />
+      <Home currentTab={currentTab} windowWidth={windowWidth} />
+      <About currentTab={currentTab} windowWidth={windowWidth} />
+      <Service
+        currentTab={currentTab}
+        windowWidth={windowWidth}
+        services={services}
+      />
     </StyledMain>
   );
 }

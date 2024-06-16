@@ -1,21 +1,23 @@
 import styled from "styled-components";
 
 const StyledSection = styled.section`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  margin-top: 8rem;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  transform: ${({ $currentTab }) => `translateX(${100 * (0 - $currentTab)}%)`};
-  opacity: ${({ $currentTab }) => ($currentTab === 0 ? "1" : "0")};
-  visibility: ${({ $currentTab }) =>
-    $currentTab === 0 ? "visible" : "hidden"};
-  transition: 0.3s ease;
+  ${({ $isBigScreen, $currentTab }) =>
+    $isBigScreen &&
+    `
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(${100 * (0 - $currentTab)}%);
+    opacity: ${$currentTab === 0 ? "1" : "0"};
+    visibility: ${$currentTab === 0 ? "visible" : "hidden"};
+    transition: 0.3s ease;
+  `}
 
   & .introduction {
     display: flex;
@@ -70,9 +72,9 @@ const StyledSection = styled.section`
     font-size: 1.4rem;
   }
 `;
-const Home = ({ currentTab }) => {
+const Home = ({ currentTab, windowWidth }) => {
   return (
-    <StyledSection $currentTab={currentTab}>
+    <StyledSection $currentTab={currentTab} $isBigScreen={windowWidth > 992}>
       <div className="introduction">
         <h1 className="catchphrase">
           Crafted with Care <br /> <span>Rooted</span> in Faith.

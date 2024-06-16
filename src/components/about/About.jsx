@@ -3,22 +3,23 @@ import smilingMuslim from "../../assets/halal.png";
 
 const companyName = "Halal Haven";
 const StyledSection = styled.section`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  width: 100vw;
   height: 100%;
-  margin-top: 5rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  transform: ${({ $currentTab }) => `translateX(${100 * (1 - $currentTab)}%)`};
-  opacity: ${({ $currentTab }) => ($currentTab === 1 ? "1" : "0")};
-  visibility: ${({ $currentTab }) =>
-    $currentTab === 1 ? "visible" : "hidden"};
-
-  transition: 0.3s ease;
+  ${({ $isBigScreen, $currentTab }) =>
+    $isBigScreen &&
+    `
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(${100 * (1 - $currentTab)}%);
+    opacity: ${$currentTab === 1 ? "1" : "0"};
+    visibility: ${$currentTab === 1 ? "visible" : "hidden"};
+    transition: 0.3s ease;
+  `}
 
   & .image-container {
     position: relative;
@@ -35,19 +36,18 @@ const StyledSection = styled.section`
 
   & .about {
     padding: 0.5rem;
+    max-width: 40rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
   }
-
-  & .about h4,
+  & h4,
   p {
     color: white;
     font-weight: 500;
   }
-
   & .about h3 {
     color: var(--primary);
     font-weight: 900;
@@ -61,14 +61,14 @@ const StyledSection = styled.section`
   }
 `;
 
-const About = ({ currentTab }) => {
+const About = ({ currentTab, windowWidth }) => {
   return (
-    <StyledSection $currentTab={currentTab}>
+    <StyledSection $currentTab={currentTab} $isBigScreen={windowWidth > 992}>
       <div className="image-container">
         <img src={smilingMuslim} alt="smiling-muslim" className="certificate" />
       </div>
       <div className="about">
-        <h4>our principles</h4>
+        <h4>about:</h4>
         <h3>what is halal haven ?</h3>
         <p>
           Welcome to {companyName}, where tradition meets quality. We provide

@@ -9,6 +9,7 @@ import About from "./components/about/About";
 import Service from "./components/service/Service";
 import WhyUs from "./components/why-us/WhyUs";
 import whyUsData from "./appData/whyUs";
+import Reviews from "./components/reviews/Reviews";
 
 const StyledMain = styled.main`
   width: 100vw;
@@ -29,6 +30,7 @@ function App() {
   const aboutSectionRef = useRef(null);
   const serviceSectionRef = useRef(null);
   const whyUsSectionRef = useRef(null);
+  const reviewsSectionRef = useRef(null);
 
   // Mobile nav handling
   const scrollToSection = (sectionId) => {
@@ -45,6 +47,9 @@ function App() {
         break;
       case "Why Us":
         sectionRef = whyUsSectionRef;
+        break;
+      case "Reviews":
+        sectionRef = reviewsSectionRef;
         break;
 
       default:
@@ -115,6 +120,11 @@ function App() {
         currentTab={currentTab}
         windowWidth={windowWidth}
         ref={whyUsSectionRef}
+      />
+      <Reviews
+        currentTab={currentTab}
+        windowWidth={windowWidth}
+        ref={reviewsSectionRef}
       />
     </StyledMain>
   );

@@ -14,9 +14,8 @@ const StyledSection = styled.section`
     align-items: center;
     flex-direction: column;
     gap: 2rem;
-    margin-top: 2rem;
-    padding:0.5rem;
-    background: var(--primary);
+    padding:5rem 0.5rem 0 0.5rem;
+    background: white;
   `}
 
   ${({ $isBigScreen, $currentTab }) =>
@@ -49,6 +48,7 @@ const StyledSection = styled.section`
   }
   & .title {
     font-weight: 500;
+    color: var(--text-2);
   }
   & .name {
     color: var(--accent-2);
@@ -61,6 +61,7 @@ const StyledSection = styled.section`
     font-size: 1.2rem;
     font-weight: 500;
     line-height: 2;
+    color: var(--text-1);
   }
 `;
 

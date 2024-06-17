@@ -5,7 +5,7 @@ const navLinks = [
   { id: uuid4(), name: "About" },
   { id: uuid4(), name: "Service" },
   { id: uuid4(), name: "Why Us" },
-  { id: uuid4(), name: "Contact" },
+  { id: uuid4(), name: "Reviews" },
 ];
 
 export default navLinks;

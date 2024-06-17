@@ -1,12 +1,18 @@
+import { forwardRef } from "react";
 import styled from "styled-components";
 
 const StyledSection = styled.section`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  ${({ $isBigScreen }) =>
+    !$isBigScreen &&
+    `
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  `}
+
   ${({ $isBigScreen, $currentTab }) =>
     $isBigScreen &&
     `
@@ -72,9 +78,13 @@ const StyledSection = styled.section`
     font-size: 1.4rem;
   }
 `;
-const Home = ({ currentTab, windowWidth }) => {
+const Home = forwardRef(({ currentTab, windowWidth }, ref) => {
   return (
-    <StyledSection $currentTab={currentTab} $isBigScreen={windowWidth > 992}>
+    <StyledSection
+      ref={ref}
+      $currentTab={currentTab}
+      $isBigScreen={windowWidth > 992}
+    >
       <div className="introduction">
         <h1 className="catchphrase">
           Crafted with Care <br /> <span>Rooted</span> in Faith.
@@ -87,5 +97,5 @@ const Home = ({ currentTab, windowWidth }) => {
       </div>
     </StyledSection>
   );
-};
+});
 export default Home;

@@ -67,7 +67,7 @@ const MobileMenu = ({
   handleMobileMenu,
   navLinks,
   socialMediaLinks,
-  handleCurrentTab,
+  scrollToSection,
 }) => {
   const zIndex = 101; // add z-index for Backdrop and MobileMenu
   return (
@@ -89,7 +89,7 @@ const MobileMenu = ({
                   className="nav-link-btn"
                   type="button"
                   onClick={() => {
-                    handleCurrentTab(index);
+                    scrollToSection(name);
                     handleMobileMenu();
                   }}
                 >

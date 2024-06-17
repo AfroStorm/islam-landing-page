@@ -25,7 +25,7 @@ const StyledDiv = styled.button`
   cursor: pointer;
   z-index: 1;
   transition: all 0.3s ease;
-  box-shadow: var(--lightest-shadow);
+  box-shadow: var(--strong-shadow);
 
   & .lines {
     display: flex;

@@ -1,13 +1,13 @@
 import { v4 as uuid4 } from "uuid";
 import islamicStudyImg from "../assets/learning.jpg";
 import muslimFamily from "../assets/smiling-family.jpg";
+const companyName = "Halal Haven";
 
 const serviceData = [
   {
     id: uuid4(),
     name: "Learning Materials",
-    description:
-      "At {companyName}, we support your spiritual growth with a wide range of Islamic study materials. From foundational texts to advanced scholarly works, our collection includes books, educational resources, and digital content for all ages.",
+    description: `At ${companyName}, we support your spiritual growth with a wide range of Islamic study materials. From foundational texts to advanced scholarly works, our collection includes books, educational resources, and digital content for all ages.`,
     image: islamicStudyImg,
     features: [
       "Books on Quranic studies, Hadith, Fiqh, and Islamic history.",
@@ -19,8 +19,7 @@ const serviceData = [
   {
     id: uuid4(),
     name: "Daily Life Products",
-    description:
-      " Discover quality products that fit seamlessly into your daily life while adhering to Islamic principles. Our range includes stylish modest clothing, prayer essentials, halal beauty products, and home decor.",
+    description: `Discover quality products that fit seamlessly into your daily life while adhering to Islamic principles. Our range includes stylish modest clothing, prayer essentials, halal beauty products, and home decor.`,
     image: muslimFamily,
     features: [
       "Modest fashion for men, women, and children.",

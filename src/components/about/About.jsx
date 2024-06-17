@@ -1,14 +1,21 @@
 import styled from "styled-components";
 import smilingMuslim from "../../assets/halal.png";
+import { forwardRef } from "react";
 
 const companyName = "Halal Haven";
 const StyledSection = styled.section`
-  width: 100vw;
-  height: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
+  ${({ $isBigScreen }) =>
+    !$isBigScreen &&
+    `
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background: var(--primary);
+  `}
+
   ${({ $isBigScreen, $currentTab }) =>
     $isBigScreen &&
     `
@@ -45,11 +52,10 @@ const StyledSection = styled.section`
   }
   & h4,
   p {
-    color: white;
     font-weight: 500;
   }
   & .about h3 {
-    color: var(--primary);
+    color: var(--accent-2);
     font-weight: 900;
   }
 
@@ -61,9 +67,13 @@ const StyledSection = styled.section`
   }
 `;
 
-const About = ({ currentTab, windowWidth }) => {
+const About = forwardRef(({ currentTab, windowWidth }, ref) => {
   return (
-    <StyledSection $currentTab={currentTab} $isBigScreen={windowWidth > 992}>
+    <StyledSection
+      ref={ref}
+      $currentTab={currentTab}
+      $isBigScreen={windowWidth > 992}
+    >
       <div className="image-container">
         <img src={smilingMuslim} alt="smiling-muslim" className="certificate" />
       </div>
@@ -82,5 +92,5 @@ const About = ({ currentTab, windowWidth }) => {
       </div>
     </StyledSection>
   );
-};
+});
 export default About;

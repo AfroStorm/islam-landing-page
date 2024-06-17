@@ -18,7 +18,6 @@ const StyledNavBar = styled.nav`
   align-items: center;
   width: 100vw;
   height: 3.7rem;
-  overflow: hidden;
   z-index: 100;
 
   & .logo {
@@ -30,7 +29,7 @@ const StyledNavBar = styled.nav`
     background: var(--primary);
     transform: skewX(-10deg);
     translate: -1rem;
-    box-shadow: var(--lightest-shadow);
+    box-shadow: var(--strong-shadow);
   }
 
   & .logo h3 {

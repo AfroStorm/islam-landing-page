@@ -22,7 +22,7 @@ html {
   --text-2: #334155;
 
   --lightest-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
-  --strong-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+  --strong-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.5);
   --colored-shadow: 2px 2px 4px 4px #54331080;
 }
 

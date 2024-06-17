@@ -1,16 +1,22 @@
 import styled from "styled-components";
 import { MdDoubleArrow } from "react-icons/md";
+import servicesData from "../../appData/services";
 import { v4 as uuid4 } from "uuid";
+import { forwardRef } from "react";
 
 const StyledSection = styled.section`
-  width: 100vw;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 2rem;
-  margin-top: 2rem;
+  ${({ $isBigScreen }) =>
+    !$isBigScreen &&
+    `
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+  `}
 
   ${({ $isBigScreen, $currentTab }) =>
     $isBigScreen &&
@@ -47,6 +53,12 @@ const StyledSection = styled.section`
     font-weight: 900;
   }
 
+  & .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.2rem;
+  }
   & .description {
     text-align: justify;
     padding: 0.5rem;
@@ -84,17 +96,24 @@ const StyledSection = styled.section`
   }
 `;
 
-const Service = ({ currentTab, windowWidth, services }) => {
+const Service = forwardRef(({ currentTab, windowWidth }, ref) => {
   return (
-    <StyledSection $currentTab={currentTab} $isBigScreen={windowWidth > 992}>
+    <StyledSection
+      ref={ref}
+      $currentTab={currentTab}
+      $isBigScreen={windowWidth > 992}
+    >
       <h4 className="title">services:</h4>
 
-      {services.map((service) => {
-        const { id, name, description, features } = service;
+      {servicesData.map((service) => {
+        const { id, name, description, image, features } = service;
         return (
           <div key={id} className="service-container">
             <h3 className="name">{name}</h3>
-            <p className="description">{description}</p>
+            <div className="img-desc-container">
+              <img src={image} alt={name} className="image" />
+              <p className="description">{description}</p>
+            </div>
 
             <ul className="features">
               {features.map((feature) => {
@@ -113,5 +132,5 @@ const Service = ({ currentTab, windowWidth, services }) => {
       })}
     </StyledSection>
   );
-};
+});
 export default Service;

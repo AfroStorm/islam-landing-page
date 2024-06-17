@@ -33,6 +33,7 @@ const StyledSection = styled.section`
   & .image {
     width: 100%;
     height: 100%;
+    max-width: 30rem;
     object-fit: cover;
     border-radius: 0.2rem;
   }

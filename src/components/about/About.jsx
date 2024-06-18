@@ -4,9 +4,9 @@ import { forwardRef } from "react";
 
 const companyName = "Halal Haven";
 const StyledSection = styled.section`
-  ${({ $isBigScreen }) =>
-    !$isBigScreen &&
-    `
+  ${({ $isBigScreen, $currentPage }) =>
+    !$isBigScreen
+      ? `
     width: 100vw;
     height: 100%;
     display: flex;
@@ -14,17 +14,14 @@ const StyledSection = styled.section`
     align-items: center;
     flex-direction: column;
     background: var(--primary);
-  `}
-
-  ${({ $isBigScreen, $currentTab }) =>
-    $isBigScreen &&
-    `
+  `
+      : `
     position: absolute;
     top: 0;
     left: 0;
-    transform: translateX(${100 * (1 - $currentTab)}%);
-    opacity: ${$currentTab === 1 ? "1" : "0"};
-    visibility: ${$currentTab === 1 ? "visible" : "hidden"};
+    transform: translateX(${100 * (1 - $currentPage)}%);
+    opacity: ${$currentPage === 1 ? "1" : "0"};
+    visibility: ${$currentPage === 1 ? "visible" : "hidden"};
     transition: 0.3s ease;
   `}
 
@@ -67,11 +64,11 @@ const StyledSection = styled.section`
   }
 `;
 
-const About = forwardRef(({ currentTab, windowWidth }, ref) => {
+const About = forwardRef(({ currentPage, windowWidth }, ref) => {
   return (
     <StyledSection
       ref={ref}
-      $currentTab={currentTab}
+      $currentPage={currentPage}
       $isBigScreen={windowWidth > 992}
     >
       <div className="image-container">

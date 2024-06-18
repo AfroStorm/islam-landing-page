@@ -5,9 +5,9 @@ import { v4 as uuid4 } from "uuid";
 import { forwardRef } from "react";
 
 const StyledSection = styled.section`
-  ${({ $isBigScreen }) =>
-    !$isBigScreen &&
-    `
+  ${({ $isBigScreen, $currentPage }) =>
+    !$isBigScreen
+      ? `
     width: 100vw;
     height: 100%;
     display: flex;
@@ -16,17 +16,14 @@ const StyledSection = styled.section`
     flex-direction: column;
     gap: 2rem;
     margin-top: 2rem;
-  `}
-
-  ${({ $isBigScreen, $currentTab }) =>
-    $isBigScreen &&
-    `
+  `
+      : `
     position: absolute;
     top: 0;
     left: 0;
-    transform: translateX(${100 * (2 - $currentTab)}%);
-    opacity: ${$currentTab === 2 ? "1" : "0"};
-    visibility: ${$currentTab === 2 ? "visible" : "hidden"};
+    transform: translateX(${100 * (2 - $currentPage)}%);
+    opacity: ${$currentPage === 2 ? "1" : "0"};
+    visibility: ${$currentPage === 2 ? "visible" : "hidden"};
     transition: 0.3s ease;
   `}
 
@@ -103,11 +100,11 @@ const StyledSection = styled.section`
   }
 `;
 
-const Service = forwardRef(({ currentTab, windowWidth }, ref) => {
+const Service = forwardRef(({ currentPage, windowWidth }, ref) => {
   return (
     <StyledSection
       ref={ref}
-      $currentTab={currentTab}
+      $currentPage={currentPage}
       $isBigScreen={windowWidth > 992}
     >
       <h4 className="title">services:</h4>

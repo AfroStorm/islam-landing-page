@@ -4,9 +4,9 @@ import userData from "../../appData/reviews";
 import CustomerSlider from "./CustomerSlider";
 
 const StyledSection = styled.section`
-  ${({ $isBigScreen }) =>
-    !$isBigScreen &&
-    `
+  ${({ $isBigScreen, $currentPage }) =>
+    !$isBigScreen
+      ? `
     width: 100vw;
     height: 100%;
     display: flex;
@@ -16,20 +16,16 @@ const StyledSection = styled.section`
     gap: 2rem;
     padding:5rem 0.5rem 0 0.5rem;
     background: white;
-  `}
-
-  ${({ $isBigScreen, $currentTab }) =>
-    $isBigScreen &&
-    `
+  `
+      : `
     position: absolute;
     top: 0;
     left: 0;
-    transform: translateX(${100 * (2 - $currentTab)}%);
-    opacity: ${$currentTab === 2 ? "1" : "0"};
-    visibility: ${$currentTab === 2 ? "visible" : "hidden"};
+    transform: translateX(${100 * (4 - $currentPage)}%);
+    opacity: ${$currentPage === 4 ? "1" : "0"};
+    visibility: ${$currentPage === 4 ? "visible" : "hidden"};
     transition: 0.3s ease;
   `}
-
 
   background: linear-gradient(
     to bottom,
@@ -53,11 +49,11 @@ const StyledSection = styled.section`
   }
 `;
 
-const Reviews = forwardRef(({ currentTab, windowWidth }, ref) => {
+const Reviews = forwardRef(({ currentPage, windowWidth }, ref) => {
   return (
     <StyledSection
       ref={ref}
-      $currentTab={currentTab}
+      $currentPage={currentPage}
       $isBigScreen={windowWidth > 992}
     >
       <div className="header">

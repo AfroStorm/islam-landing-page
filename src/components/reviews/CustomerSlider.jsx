@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import SingleSlide from "./SingleSlide";
+import { useState } from "react";
 
 const StyledUl = styled.ul`
   position: relative;
@@ -40,17 +41,44 @@ const StyledUl = styled.ul`
 `;
 
 const CustomerSlider = ({ userData }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const handleCustomerSlide = (btnDirection) => {
+    btnDirection === "prev"
+      ? setCurrentSlide((oldSlide) => {
+          const result = (oldSlide - 1 + userData.length) % userData.length;
+          return result;
+        })
+      : setCurrentSlide((oldSlide) => {
+          const result = (oldSlide + 1) % userData.length;
+          return result;
+        });
+  };
+
   return (
     <StyledUl>
       <button className="arrow-btn left-btn">
-        <MdArrowBackIosNew className="arrow-icon" />
+        <MdArrowBackIosNew
+          className="arrow-icon"
+          onClick={() => handleCustomerSlide("prev")}
+        />
       </button>
       <button className="arrow-btn right-btn">
-        <MdArrowForwardIos className="arrow-icon" />
+        <MdArrowForwardIos
+          className="arrow-icon"
+          onClick={() => handleCustomerSlide("next")}
+        />
       </button>
 
-      {userData.map((data) => {
-        return <SingleSlide key={data.id} {...data} />;
+      {userData.map((data, index) => {
+        return (
+          <SingleSlide
+            key={data.id}
+            {...data}
+            currentSlide={currentSlide}
+            slideIndex={index}
+          />
+        );
       })}
     </StyledUl>
   );

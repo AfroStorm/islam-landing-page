@@ -2,26 +2,23 @@ import { forwardRef } from "react";
 import styled from "styled-components";
 
 const StyledSection = styled.section`
-  ${({ $isBigScreen }) =>
-    !$isBigScreen &&
-    `
+  ${({ $isBigScreen, $currentPage }) =>
+    !$isBigScreen
+      ? `
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-  `}
-
-  ${({ $isBigScreen, $currentTab }) =>
-    $isBigScreen &&
-    `
+  `
+      : `
     position: absolute;
     top: 0;
     left: 0;
-    transform: translateX(${100 * (0 - $currentTab)}%);
-    opacity: ${$currentTab === 0 ? "1" : "0"};
-    visibility: ${$currentTab === 0 ? "visible" : "hidden"};
+    transform: translateX(${100 * (0 - $currentPage)}%);
+    opacity: ${$currentPage === 0 ? "1" : "0"};
+    visibility: ${$currentPage === 0 ? "visible" : "hidden"};
     transition: 0.3s ease;
   `}
 
@@ -78,11 +75,11 @@ const StyledSection = styled.section`
     font-size: 1.4rem;
   }
 `;
-const Home = forwardRef(({ currentTab, windowWidth }, ref) => {
+const Home = forwardRef(({ currentPage, windowWidth }, ref) => {
   return (
     <StyledSection
       ref={ref}
-      $currentTab={currentTab}
+      $currentPage={currentPage}
       $isBigScreen={windowWidth > 992}
     >
       <div className="introduction">

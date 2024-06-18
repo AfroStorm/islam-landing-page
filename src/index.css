@@ -21,8 +21,17 @@ html {
   --text-1: #64748b;
   --text-2: #334155;
 
-  --lightest-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
-  --strong-shadow: 3px 3px 10px 5px rgba(0, 0, 0, 0.5);
+  --light-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  --light-shadow-top: 0 -5px 5px -5px rgba(0, 0, 0, 0.5);
+  --light-shadow-right: 5px 0 5px -5px rgba(0, 0, 0, 0.5);
+  --light-shadow-bottom: 0 5px 5px -5px rgba(0, 0, 0, 0.5);
+  --light-shadow-left: -5px 0 5px -5px rgba(0, 0, 0, 0.5);
+
+  --strong-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+  --strong-shadow-top: 0 -10px 10px -5px rgba(0, 0, 0, 0.5);
+  --strong-shadow-right: 10px 0 10px -5px rgba(0, 0, 0, 0.5);
+  --strong-shadow-bottom: 0 10px 10px -5px rgba(0, 0, 0, 0.5);
+  --strong-shadow-left: -10px 0 10px -5px rgba(0, 0, 0, 0.5);
   --colored-shadow: 2px 2px 4px 4px #54331080;
 }
 

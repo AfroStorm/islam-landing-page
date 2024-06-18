@@ -13,10 +13,11 @@ const StyledDiv = styled.div`
   align-items: center;
   gap: 3rem;
   background: var(--primary);
-  z-index: ${({ $zIndex }) => $zIndex};
-  transform: ${({ $isHidden }) =>
-    $isHidden ? "translateX(-100%)" : "translateX(0%)"};
-  opacity: ${({ $isHidden }) => ($isHidden ? "0" : "1")};
+  ${({ $zIndex, $isHidden }) => `
+    z-index: ${$zIndex};
+    transform: ${$isHidden ? "translateX(-100%)" : "translateX(0%)"};
+    opacity: ${$isHidden ? "0" : "1"};
+`}
   transition: 0.3s ease;
 
   & .nav-links {
@@ -42,11 +43,12 @@ const StyledNavLinkItem = styled.li`
     font-size: 2rem;
     font-weight: 900;
     color: var(--accent-2);
-    transform: ${({ $isHidden }) =>
-      $isHidden ? "translateY(100%)" : "translateY(0%)"};
-    opacity: ${({ $isHidden }) => ($isHidden ? "0" : "1")};
-    transition: ${({ $isHidden }) => ($isHidden ? "none" : "0.6s ease")};
-    transition-delay: ${({ $index }) => `${($index + 1) * 0.1}s`};
+    ${({ $isHidden, $index }) => `
+    transform: ${$isHidden ? "translateY(100%)" : "translateY(0%)"};
+    opacity: ${$isHidden ? "0" : "1"};
+    transition:${$isHidden ? "none" : "0.6s ease"};
+    transition-delay: ${($index + 1) * 0.1}s;
+`}
   }
 `;
 
@@ -54,10 +56,11 @@ const StyledSocialLinkItem = styled.li`
   & .icon {
     font-size: 3rem;
     color: var(--accent-2);
-    transform: ${({ $isHidden }) =>
-      $isHidden ? "translateY(100%)" : "translateY(0%)"};
-    opacity: ${({ $isHidden }) => ($isHidden ? "0" : "1")};
-    transition: ${({ $isHidden }) => ($isHidden ? "none" : "0.6s ease")};
+    ${({ $isHidden }) => `
+    transform: ${$isHidden ? "translateY(100%)" : "translateY(0%)"};
+    opacity: ${$isHidden ? "0" : "1"};
+    transition:${$isHidden ? "none" : "0.6s ease"};
+`}
     transition-delay: 0.6s;
   }
 `;

@@ -13,6 +13,12 @@ const StyledLi = styled.li`
   align-items: center;
   gap: 1rem;
   padding: 0.5rem;
+  ${({ $currentSlide, $slideIndex }) =>
+    `transform: translateX(${100 * ($slideIndex - $currentSlide)}%);
+     opacity: ${$currentSlide === $slideIndex ? "1" : "0"};
+     visibility: ${$currentSlide === $slideIndex ? "visible" : "hidden"};
+    `}
+  transition: 0.3s ease;
 
   & .img-container {
     position: relative;
@@ -35,14 +41,14 @@ const StyledLi = styled.li`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
   }
   & .review {
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
   }
 
@@ -77,7 +83,15 @@ const StyledLi = styled.li`
   }
 `;
 
-const SingleSlide = ({ image, userName, age, reviewText, numOfStars }) => {
+const SingleSlide = ({
+  image,
+  userName,
+  age,
+  reviewText,
+  numOfStars,
+  currentSlide,
+  slideIndex,
+}) => {
   const starIcon = <LiaStarSolid className="star-icon" />;
   const RepeatElement = ({ times, element }) => {
     return (
@@ -90,7 +104,7 @@ const SingleSlide = ({ image, userName, age, reviewText, numOfStars }) => {
   };
 
   return (
-    <StyledLi>
+    <StyledLi $currentSlide={currentSlide} $slideIndex={slideIndex}>
       <div className="img-container">
         <img src={image} alt="user-image" />
       </div>

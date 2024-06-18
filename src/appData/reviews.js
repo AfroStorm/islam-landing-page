@@ -13,24 +13,24 @@ const userData = [
     reviewText:
       "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit vel magniperspiciatis consectetur? Dignissimos nulla omnis laborum veniam corporisaut voluptatum reiciendis facere ipsam earum, itaque neque culpa, iure.",
   },
-  // {
-  //   id: uuid4(),
-  //   image: youngMuslima,
-  //   userName: "Fatima Abbas",
-  //   age: 22,
-  //   numOfStars: 4,
-  //   reviewText:
-  //     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit vel magniperspiciatis consectetur? Dignissimos nulla omnis laborum veniam corporisaut voluptatum reiciendis facere ipsam earum, itaque neque culpa, iure.",
-  // },
-  // {
-  //   id: uuid4(),
-  //   image: muslimFamily,
-  //   userName: "Ahmad Barakat",
-  //   age: 33,
-  //   numOfStars: 4,
-  //   reviewText:
-  //     "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit vel magniperspiciatis consectetur? Dignissimos nulla omnis laborum veniam corporisaut voluptatum reiciendis facere ipsam earum, itaque neque culpa, iure.",
-  // },
+  {
+    id: uuid4(),
+    image: youngMuslima,
+    userName: "Fatima Abbas",
+    age: 22,
+    numOfStars: 4,
+    reviewText:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit vel magniperspiciatis consectetur? Dignissimos nulla omnis laborum veniam corporisaut voluptatum reiciendis facere ipsam earum, itaque neque culpa, iure.",
+  },
+  {
+    id: uuid4(),
+    image: muslimFamily,
+    userName: "Ahmad Barakat",
+    age: 33,
+    numOfStars: 4,
+    reviewText:
+      "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugit vel magniperspiciatis consectetur? Dignissimos nulla omnis laborum veniam corporisaut voluptatum reiciendis facere ipsam earum, itaque neque culpa, iure.",
+  },
 ];
 
 export default userData;

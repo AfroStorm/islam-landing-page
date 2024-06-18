@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Home from "./components/home/Home";
-import NavBar from "./components/general/NavBar";
+import NavBar from "./components/general/nav-bar/NavBar";
 import { useEffect, useRef, useState } from "react";
 import MobileMenu from "./components/general/MobileMenu";
 import navLinks from "./appData/navLinks";
@@ -25,7 +25,7 @@ const StyledMain = styled.main`
 function App() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isHidden, setIsHidden] = useState(true);
-  const [currentTab, setCurrentTab] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
   const homeSectionRef = useRef(null);
   const aboutSectionRef = useRef(null);
   const serviceSectionRef = useRef(null);
@@ -66,8 +66,8 @@ function App() {
   };
 
   // Big nav handling
-  const handleCurrentTab = (chosenTab) => {
-    setCurrentTab(chosenTab);
+  const handleCurrentPage = (chosenPage) => {
+    setCurrentPage(chosenPage);
   };
 
   // Effect to update window width on resize
@@ -99,30 +99,30 @@ function App() {
         handleMobileMenu={handleMobileMenu}
         navLinks={navLinks}
         socialMediaLinks={socialMediaLinks}
-        handleCurrentTab={handleCurrentTab}
+        handleCurrentPage={handleCurrentPage}
       />
       <Home
-        currentTab={currentTab}
+        currentPage={currentPage}
         windowWidth={windowWidth}
         ref={homeSectionRef}
       />
       <About
-        currentTab={currentTab}
+        currentPage={currentPage}
         windowWidth={windowWidth}
         ref={aboutSectionRef}
       />
       <Service
-        currentTab={currentTab}
+        currentPage={currentPage}
         windowWidth={windowWidth}
         ref={serviceSectionRef}
       />
       <WhyUs
-        currentTab={currentTab}
+        currentPage={currentPage}
         windowWidth={windowWidth}
         ref={whyUsSectionRef}
       />
       <Reviews
-        currentTab={currentTab}
+        currentPage={currentPage}
         windowWidth={windowWidth}
         ref={reviewsSectionRef}
       />

@@ -14,13 +14,16 @@ const StyledSection = styled.section`
   `
       : `
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 30%;
+    left: 10%;
     transform: translateX(${100 * (0 - $currentPage)}%);
     opacity: ${$currentPage === 0 ? "1" : "0"};
     visibility: ${$currentPage === 0 ? "visible" : "hidden"};
     transition: 0.3s ease;
-  `}
+    width:60vw;
+    height:70vh;
+
+`}
 
   & .introduction {
     display: flex;
@@ -73,6 +76,25 @@ const StyledSection = styled.section`
   & .call-to-action button:active {
     color: var(--accent-1);
     font-size: 1.4rem;
+  }
+
+  @media screen and (min-width: 992px) {
+    & .catchphrase {
+      font-size: 3.2rem;
+    }
+    & .call-to-action {
+      text-align: start;
+    }
+    & .call-to-action button {
+      font-size: 2rem;
+      width: 13rem;
+      margin-left: 4rem;
+      height: 5rem;
+    }
+    & .call-to-action button:hover,
+    & .call-to-action button:active {
+      font-size: 2.4rem;
+    }
   }
 `;
 const Home = forwardRef(({ currentPage, windowWidth }, ref) => {

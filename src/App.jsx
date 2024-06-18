@@ -8,7 +8,6 @@ import socialMediaLinks from "./appData/socialMediaLinks";
 import About from "./components/about/About";
 import Service from "./components/service/Service";
 import WhyUs from "./components/why-us/WhyUs";
-import whyUsData from "./appData/whyUs";
 import Reviews from "./components/reviews/Reviews";
 
 const StyledMain = styled.main`
@@ -18,6 +17,7 @@ const StyledMain = styled.main`
     `  
     position: relative;
     height: 100vh;
+    width: 100vw;
 `}
   overflow: hidden;
 `;
